@@ -7,6 +7,6 @@
 
 <%= link_to "Edit Project", "/projects/#{ @project.id }/edit", class: "btn btn_success" %>
 
-<%= link_to "Add Task", "/tasks/new" %>
+<%= link_to "Add Task", "/projects/#{ @project.id }/tasks/new" %>
 
 <%= link_to "Delete", "/projects/#{ @project.id }", method: :delete, data: { confirm: "Are You Sure?" } %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/projects/:id' => 'projects#show'
 
+  get '/projects/:project_id/tasks/new'=> 'tasks#new'
+
   get '/projects/:id/edit' => 'projects#edit'
   patch '/projects/:id' => 'projects#update'
 
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   #tasks controller
   get '/tasks' => 'tasks#index'
 
-  get '/tasks/new'=> 'tasks#new'
+
   post '/tasks' => 'tasks#create'
 
   get '/tasks/:id' => 'tasks#show'

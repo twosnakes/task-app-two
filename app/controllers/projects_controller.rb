@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   def create
     project = Project.new(
       name: params[:name],
-      user_id: params[:user_id]
+      user_id: 1
       )
     if project.save
       flash[:success] = "Project Successfully Created"
