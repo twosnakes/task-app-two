@@ -5,26 +5,25 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @project = Project.find(params[:project_id])
   end
 
   def create
-    @project = Project.find(params[:project_id])
-    @task = @project.tasks.new(params[:task])
     task = Task.new(
       title: params[:title],
       description: params[:description],
       project_id: params[:project_id]
-      )
+    )
     if task.save
       flash[:success] = "Project Successfully Created"
-      redirect_to "/tasks/#{ @task.id }"
+      redirect_to "/tasks/#{ task.id }"
     else
       render 'new.html.erb'
     end
   end
 
   def show
-    @tasks = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def edit
