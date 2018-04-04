@@ -1,0 +1,12 @@
+<h1>Project Show Page</h1>
+
+<h2><%= @project.name %></h2>
+
+
+<%= link_to "Back", "/" %>
+
+<%= link_to "Edit Project", "/projects/#{ @project.id }/edit", class: "btn btn_success" %>
+
+<%= link_to "Add Task", "/tasks/new" %>
+
+<%= link_to "Delete", "/projects/#{ @project.id }", method: :delete, data: { confirm: "Are You Sure?" } %>
