@@ -13,6 +13,8 @@
 
   <input type="hidden" name="project_id" value="<%= @project.id %>">
 
+  <input type="date" name="deadline" min="<%= Date.today %>" value="<%= Date.today %>">
+
 
   <input type="submit" value="create task">
 

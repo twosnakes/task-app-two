@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
   #Projects controller
   get '/' => 'projects#index'
   get '/projects' => 'projects#index'

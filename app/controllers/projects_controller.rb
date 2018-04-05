@@ -34,9 +34,10 @@ class ProjectsController < ApplicationController
     project = Project.find(params[:id])
     project.assign_attributes(
       name: params[:name],
-      user_id: params[:user_id]
+      user_id: 1
       )
     project.save
+    puts project.errors.inspect
     flash[:success] = "Product Successfully Updated"
     redirect_to "/projects/#{ project.id }"
   end

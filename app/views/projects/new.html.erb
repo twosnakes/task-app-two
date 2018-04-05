@@ -4,7 +4,7 @@
 <%= form_tag "/projects", method: :post do %>
 
   <div class="new-item-form">
-    Project Name: <input type="text" name="name">
+    Project Name: <input type="text" name="name" minlength="3" required="true">
   </div>
 
   <input type="submit" value="create project">

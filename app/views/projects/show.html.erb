@@ -1,7 +1,24 @@
+<style>
+  .complete {
+    text-decoration: line-through;
+  }
+</style>
+
 <h1>Project Show Page</h1>
 
 <h2><%= @project.name %></h2>
+<ul>
+  <% @project.tasks.each do |task| %>
+    <li textSelectable='false'>
+      <span class="task"><%= task.title %></span> -  <%= link_to "Edit Task", "/tasks/#{ task.id }/edit" %> | <%= link_to "Delete Task", "/tasks/#{ task.id }", method: :delete, data: { confirm: "Are You Sure?" } %> - <%= link_to "Mark Task Complete" %>
 
+      <%= task.task_complete %>
+      <p>
+         <%= "Due #{task.deadline.strftime("%b %e, %Y")}" if task.deadline%>
+      </p>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to "Back", "/" %>
 
@@ -10,3 +27,22 @@
 <%= link_to "Add Task", "/projects/#{ @project.id }/tasks/new" %>
 
 <%= link_to "Delete", "/projects/#{ @project.id }", method: :delete, data: { confirm: "Are You Sure?" } %>
+
+
+<script>
+    var tasks = $('span.task');
+    for (let i = 0; i < tasks.length; i++) {
+      tasks[i].addEventListener('click', function() {
+        this.classList.toggle('complete')
+        markComplete(this);
+      })
+    }
+
+    function markComplete(item) {
+      if (item.classList.contains('complete')) {
+        console.log('yay') // add ajax call to mark complete/true
+      } else {
+        console.log('nope') // add ajax call to mark incomplete/false
+      }
+    }
+</script>

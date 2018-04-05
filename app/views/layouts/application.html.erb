@@ -9,6 +9,28 @@
   </head>
 
   <body>
+
+    <nav class= "navbar navbar-default">
+      <div class= "container">
+        <div class= "navbar-header">
+          <%= link_to "Projects Home Page", '/', class: "navbar-brand" %>
+        </div>
+        <ul class= "nav navbar-nav">
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% if current_user.present? %>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Log In", new_user_session_path %></li>
+            <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
+
+
   </body>
 </html>
