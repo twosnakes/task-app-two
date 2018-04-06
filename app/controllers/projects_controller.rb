@@ -1,7 +1,10 @@
 class ProjectsController < ApplicationController
+
   def index
-    @projects = Project.all
+    if user_signed_in?
+    @projects = Project.where(:user_id => current_user.id)
     @tasks = Task.all
+    end
   end
 
   def new
@@ -11,7 +14,7 @@ class ProjectsController < ApplicationController
   def create
     project = Project.new(
       name: params[:name],
-      user_id: 1
+      user_id: current_user.id
       )
     if project.save
       flash[:success] = "Project Successfully Created"
@@ -34,7 +37,7 @@ class ProjectsController < ApplicationController
     project = Project.find(params[:id])
     project.assign_attributes(
       name: params[:name],
-      user_id: 1
+      user_id: current_user.id
       )
     project.save
     puts project.errors.inspect
@@ -49,3 +52,4 @@ class ProjectsController < ApplicationController
     redirect_to "/"
   end
 end
+

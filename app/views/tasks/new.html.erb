@@ -7,10 +7,6 @@
     Task Name: <input type="text" name="title">
   </div>
 
-    <div class="new-item-form">
-    Task Description: <input type="text" name="description">
-  </div>
-
   <input type="hidden" name="project_id" value="<%= @project.id %>">
 
   <input type="date" name="deadline" min="<%= Date.today %>" value="<%= Date.today %>">

@@ -10,6 +10,10 @@
       Task Deadline: <input type="date" name="deadline" value="<%= @task.deadline %>" min="Date.today">
     </div>
 
+    <div class="new=item-form">
+       Task Complete: <input type="checkbox" name="task_complete" value="<%= @task.task_complete %>"checked="task_complete">
+    </div>
+
     <input type="submit" value="Update">
 
 <% end %>

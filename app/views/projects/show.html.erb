@@ -4,29 +4,32 @@
   }
 </style>
 
-<h1>Project Show Page</h1>
-
 <h2><%= @project.name %></h2>
 <ul>
   <% @project.tasks.each do |task| %>
-    <li textSelectable='false'>
-      <span class="task"><%= task.title %></span> -  <%= link_to "Edit Task", "/tasks/#{ task.id }/edit" %> | <%= link_to "Delete Task", "/tasks/#{ task.id }", method: :delete, data: { confirm: "Are You Sure?" } %> - <%= link_to "Mark Task Complete" %>
+  <li>
+    <!-- <li textSelectable='false'> -->
+      <span class="task"><%= task.title %></span> -  <%= link_to "Edit Task", "/tasks/#{ task.id }/edit" %> | <%= link_to "Delete Task", "/tasks/#{ task.id }", method: :delete, data: { confirm: "Are You Sure?" } %> | <%= link_to "Mark Task Complete" %>
+        
 
-      <%= task.task_complete %>
-      <p>
+          <% if task.task_complete? %>
+          <h3><strike><%= task.task_complete %></strike></h3>
+     
+       <p>
          <%= "Due #{task.deadline.strftime("%b %e, %Y")}" if task.deadline%>
       </p>
-    </li>
+   </li>
+    <% end %>
   <% end %>
 </ul>
 
-<%= link_to "Back", "/" %>
+<%= link_to "Back To Home Page", "/", class: "btn btn-success" %>
 
-<%= link_to "Edit Project", "/projects/#{ @project.id }/edit", class: "btn btn_success" %>
+<%= link_to "Edit Project", "/projects/#{ @project.id }/edit", class: "btn btn-success" %>
 
-<%= link_to "Add Task", "/projects/#{ @project.id }/tasks/new" %>
+<%= link_to "Add Task", "/projects/#{ @project.id }/tasks/new",  class: "btn btn-success" %>
 
-<%= link_to "Delete", "/projects/#{ @project.id }", method: :delete, data: { confirm: "Are You Sure?" } %>
+<%= link_to "Delete Project", "/projects/#{ @project.id }", method: :delete, data: { confirm: "Are You Sure?" }, class: "btn btn-success" %>
 
 
 <script>

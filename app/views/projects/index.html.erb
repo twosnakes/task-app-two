@@ -1,13 +1,13 @@
-<h1>Index view of projects</h1>
 
 
-<% @projects.each do |project| %>
+<% if user_signed_in? %>
+
+<p>Hello <%= current_user.email %></p>
+  <% @projects.each do |project| %>
     <h1><a href="/projects/<%= project.id %>"> <%= project.name %></a></h1>
-  <ul>
-    <% project.tasks.each do |task| %>
-      <li><a href="/tasks/<%= task.id %>"> <%= task.title %></a></li>
-    <% end %>
-  </ul>
+  <% end %>
+    <a class="btn btn-primary" href="/projects/new" role="button">Create New Project!</a>
+<% else %>
+  <%= render 'layouts/static_landing_page' %>
 <% end %>
 
-<a class="btn btn-primary" href="/projects/new" role="button">Create New Project!</a>
